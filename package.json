@@ -1,0 +1,20 @@
+{
+  "name": "projeto-ng",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtrtga/Projeto-NG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vtrtga/Projeto-NG/issues"
+  },
+  "homepage": "https://github.com/vtrtga/Projeto-NG#readme"
+}
