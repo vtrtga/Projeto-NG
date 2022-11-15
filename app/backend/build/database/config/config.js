@@ -5,7 +5,7 @@ const config = {
     username: process.env.DB_USER || 'root',
     password: process.env.DB_PASS || '123456',
     database: 'PROCESSO_NG',
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'db',
     port: Number(process.env.DB_PORT) || 3306,
     dialect: 'postgres',
     dialectOptions: {
