@@ -4,12 +4,16 @@ import UserService from '../database/services/UserService';
 
 const validateUserRegistration = (req: Request, res: Response, next: NextFunction) => {
   const { body } = req;
-  console.log(body);
   const { error } = createUserSchema.validate(body);
-
-  console.log(error?.details[0]);
+  // if(error.details[0].message)
 
   if (error) {
+    if (error?.details[0].type === 'string.pattern.base') {
+      return res.status(401).json(
+        { message: 'Password must contain as least 8 characters, numbers and an uppercase letter' },
+      );
+    }
+
     return res.status(401).json({ message: error.details[0].message });
   }
 
