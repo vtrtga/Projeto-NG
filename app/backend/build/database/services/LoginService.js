@@ -17,9 +17,13 @@ class LoginService {
     constructor() {
         this.login = (user) => __awaiter(this, void 0, void 0, function* () {
             const result = yield UsersModel_1.default.findOne({
-                where: { username: user.username }
+                where: { username: user.username },
             });
+            if (!result)
+                return undefined;
+            return result;
         });
     }
 }
+exports.default = LoginService;
 //# sourceMappingURL=LoginService.js.map

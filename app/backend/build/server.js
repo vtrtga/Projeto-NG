@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
 require("dotenv/config");
 const PORT = process.env.APP_PORT || 3001;
-app_1.default.listen(PORT, () => console.log("OK"));
+app_1.default.listen(PORT, () => console.log('OK'));
 //# sourceMappingURL=server.js.map
