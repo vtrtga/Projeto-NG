@@ -1,6 +1,7 @@
 import { DATE, INTEGER, Model } from 'sequelize';
 import db from './db';
-import { Accounts } from './index';
+// eslint-disable-next-line import/no-cycle
+import Accounts from './AccountsModel';
 
 export default class Transactions extends Model {
   id!: number;
@@ -38,6 +39,7 @@ Transactions.init({
   sequelize: db,
   modelName: 'transactions',
   timestamps: false,
+
 });
 
 Transactions.belongsTo(Accounts, {
@@ -49,3 +51,5 @@ Transactions.belongsTo(Accounts, {
   foreignKey: 'creditedAccountId',
   targetKey: 'id',
 });
+
+Accounts.hasMany(Transactions);

@@ -1,5 +1,6 @@
 import { INTEGER, Model, STRING } from 'sequelize';
-import { Accounts } from './index';
+// eslint-disable-next-line import/no-cycle
+import Accounts from './AccountsModel';
 import db from './db';
 
 export default class Users extends Model {
@@ -34,6 +35,7 @@ Users.init({
 }, {
   sequelize: db,
   modelName: 'users',
+  underscored: false,
   timestamps: false,
 });
 
@@ -41,3 +43,5 @@ Users.belongsTo(Accounts, {
   foreignKey: 'accountId',
   targetKey: 'id',
 });
+
+Accounts.hasOne(Users);

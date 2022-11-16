@@ -1,6 +1,5 @@
 import { INTEGER, Model } from 'sequelize';
 import db from './db';
-import { Users, Transactions } from './index';
 
 export default class Accounts extends Model {
   id!: number;
@@ -13,6 +12,10 @@ Accounts.init({
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
+    references: {
+      model: 'accounts',
+      key: 'id',
+    },
   },
   balance: {
     type: INTEGER,
@@ -21,10 +24,5 @@ Accounts.init({
 }, {
   sequelize: db,
   modelName: 'accounts',
-  timestamps: true,
+  timestamps: false,
 });
-
-Accounts.hasOne(Users);
-
-Accounts.hasMany(Transactions);
-//
