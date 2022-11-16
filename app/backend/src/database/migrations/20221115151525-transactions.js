@@ -11,6 +11,7 @@ module.exports = {
       debitedAccountId: Sequelize.INTEGER,
       creditedAccountId: Sequelize.INTEGER,
       value: Sequelize.INTEGER,
+      createdAt: Sequelize.DATE,
     })
   },
 

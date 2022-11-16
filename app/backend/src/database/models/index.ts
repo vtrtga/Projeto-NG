@@ -1,4 +1,5 @@
-import { Sequelize } from 'sequelize';
-import * as config from '../config/config';
+import Accounts from "./AccountsModel";
+import Transactions from "./TransactionsModel";
+import Users from "./UsersModel";
 
-export default new Sequelize(config);
+export {Accounts, Users, Transactions};

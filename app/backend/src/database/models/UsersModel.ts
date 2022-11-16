@@ -1,8 +1,8 @@
 import { INTEGER, Model, STRING } from 'sequelize';
-import db from '.';
-import Accounts from './AccountsModel';
+import { Accounts } from './index';
+import db from './db';
 
-class Users extends Model {
+export default class Users extends Model {
   id!: number;
   username!: string;
   password!: string;
@@ -29,9 +29,9 @@ Users.init({
     references: {
       model: 'accounts',
       key: 'id',
-    }
+    },
   },
-},{
+}, {
   sequelize: db,
   modelName: 'users',
   timestamps: false,
@@ -40,6 +40,4 @@ Users.init({
 Users.belongsTo(Accounts, {
   foreignKey: 'accountId',
   targetKey: 'id',
-})
-
-export default Users;
+});

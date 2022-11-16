@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.bulkInsert('accounts', [
+    await queryInterface.bulkInsert('transactions', [
       {
         debitedAccountId: 1,
         creditedAccountId: 2,
@@ -19,6 +19,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.bulkDelete('accounts', null, {});
+    await queryInterface.bulkDelete('transactions', null, {});
   },
 };

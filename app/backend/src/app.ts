@@ -4,6 +4,6 @@ import loginRouter from './database/routers/LoginRouter';
 const app = express();
 
 app.use(express.json());
-app.use('/login', loginRouter)
+app.use('/', loginRouter);
 
 export default app;

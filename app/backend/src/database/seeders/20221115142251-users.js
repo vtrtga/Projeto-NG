@@ -5,14 +5,15 @@ module.exports = {
     await queryInterface.bulkInsert('users', [
       {
         username: 'Admin',
-        password: '$2a$08$xi.Hxk1czAO0nZR..B393u10aED0RQ1N3PAEXQ7HxtLjKPEZBu.PW',
+        password: '$2a$06$xuEl3rKavBwWec9zCcD1aeY72wgK55UNTkdPPgVu1mldIr8gA.h2y',
         accountId: 1,
-          // senha: secret_admin
+          // senha: Secretadmin123
       },
       {
         username: 'User',
-        password: '$2a$08$Y8Abi8jXvsXyqm.rmp0B.uQBA5qUz7T6Ghlg/CvVr/gLxYj5UAZVO', 
+        password: '$2a$06$yyqWvRObujdx9PmCQwkXCOv1JN3gVJQzr8QDm2oMc8vVM/Y6wuF/S', 
         accountId: 2,
+        // senha: Secretuser123
       },
     ], {});
   },

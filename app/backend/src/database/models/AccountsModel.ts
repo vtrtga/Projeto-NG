@@ -1,9 +1,8 @@
 import { INTEGER, Model } from 'sequelize';
-import db from '.';
-import Transactions from './TransactionsModel';
-import Users from './UsersModel';
+import db from './db';
+import { Users, Transactions } from './index';
 
-class Accounts extends Model {
+export default class Accounts extends Model {
   id!: number;
   balance!: number;
 }
@@ -18,8 +17,8 @@ Accounts.init({
   balance: {
     type: INTEGER,
     defaultValue: 100,
-  }
-},{
+  },
+}, {
   sequelize: db,
   modelName: 'accounts',
   timestamps: true,
@@ -28,5 +27,4 @@ Accounts.init({
 Accounts.hasOne(Users);
 
 Accounts.hasMany(Transactions);
-
-export default Accounts;
+//

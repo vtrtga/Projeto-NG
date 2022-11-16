@@ -5,7 +5,6 @@ module.exports = {
     await queryInterface.bulkInsert('accounts', [
       {
         balance: 100,
-          // senha: secret_admin
       },
       {
         balance: 200, 

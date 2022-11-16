@@ -1,8 +1,8 @@
-import { BelongsTo, INTEGER, Model } from 'sequelize';
-import db from '.';
-import Accounts from './AccountsModel';
+import { DATE, INTEGER, Model } from 'sequelize';
+import db from './db';
+import { Accounts } from './index';
 
-class Transactions extends Model {
+export default class Transactions extends Model {
   id!: number;
   debitedAccountId!: number;
   creditedAccountId!: number;
@@ -20,34 +20,32 @@ Transactions.init({
   },
   debitedAccountId: {
     type: INTEGER,
-  references: {
-    model: 'accounts',
-    key: 'id',
-  }
+    references: {
+      model: 'accounts',
+      key: 'id',
+    },
   },
   creditedAccountId: {
     type: INTEGER,
     references: {
       model: 'accounts',
       key: 'id',
-    }
+    },
   },
-  
   value: INTEGER,
-},{
+  createdAt: DATE,
+}, {
   sequelize: db,
   modelName: 'transactions',
-  timestamps: true,
+  timestamps: false,
 });
 
 Transactions.belongsTo(Accounts, {
   foreignKey: 'debitedAccountId',
   targetKey: 'id',
-})
+});
 
 Transactions.belongsTo(Accounts, {
   foreignKey: 'creditedAccountId',
   targetKey: 'id',
-})
-
-export default Transactions;
+});
