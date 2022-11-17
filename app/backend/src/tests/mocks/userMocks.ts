@@ -4,13 +4,13 @@ const validUser = {
 };
 
 const invalidPasswordUser = {
-  username: "invalid",
-  password: "invalidPawword",
+  username: "Admin",
+  password: "invalidPassword",
 }
 
 const invalidUsername = {
   username: "fd",
-  password: "Invalidusername123"
+  password: "Secretadmin123"
 }
 
 const userMock = {
