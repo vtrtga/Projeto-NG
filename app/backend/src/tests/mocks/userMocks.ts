@@ -13,9 +13,14 @@ const invalidUsername = {
   password: "Secretadmin123"
 }
 
+const newUser = {
+  username: "Joao",
+  password: "Secretjoao123"
+}
+
 const userMock = {
   username: "Admin",
   password: "$2a$06$xuEl3rKavBwWec9zCcD1aeY72wgK55UNTkdPPgVu1mldIr8gA.h2y",
 }
 
-export { invalidPasswordUser, invalidUsername, validUser, userMock };
+export { invalidPasswordUser, invalidUsername, validUser, userMock, newUser };

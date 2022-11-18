@@ -19,4 +19,11 @@ export default class UserCrontroller {
     const newUser = await this.userService.create(req.body);
     return res.status(201).json(newUser);
   };
+
+  checkBalance = async (req: Request, res:Response) => {
+    const { id } = req.params;
+    const userBalance = await this.userService.checkBalance(id);
+
+    return res.status(200).json(userBalance);
+  };
 }

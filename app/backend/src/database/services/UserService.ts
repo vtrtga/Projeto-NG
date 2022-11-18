@@ -33,12 +33,29 @@ export default class UserService {
       );
 
       await t.commit();
+      const userInfo = {
+        id: newUser.id,
+        username: newUser.username,
+        accountId: newAccount.id,
+        balance: newAccount.balance,
+      };
 
-      return newUser;
+      return userInfo;
     } catch (e) {
       console.log(e);
 
       throw e;
     }
+  };
+
+  checkBalance = async (id: string) => {
+    const numberId = Number(id);
+    const userBalance = await Users.findOne({
+      where: { id: numberId },
+      attributes: { exclude: ['id', 'password', 'accountId', 'username'] },
+      include: [{ model: Accounts, attributes: { exclude: ['id'] } }],
+    });
+
+    return userBalance;
   };
 }

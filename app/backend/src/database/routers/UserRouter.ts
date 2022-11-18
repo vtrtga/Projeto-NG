@@ -1,11 +1,13 @@
 import { Router } from 'express';
+import validateToken from '../../middlewares/validateToken';
 import { validateUserRegistration, isAnExistentUser } from '../../middlewares/userMiddlewares';
 import UserCrontroller from '../controllers/UserController';
 
 const UserRouter = Router();
-const userControlller = new UserCrontroller();
+const { create, getUser, checkBalance } = new UserCrontroller();
 
-UserRouter.get('/', userControlller.getUser);
-UserRouter.post('/create', validateUserRegistration, isAnExistentUser, userControlller.create);
+UserRouter.get('/', getUser);
+UserRouter.post('/register', validateUserRegistration, isAnExistentUser, create);
+UserRouter.get('/balance/:id', validateToken, checkBalance);
 
 export default UserRouter;
