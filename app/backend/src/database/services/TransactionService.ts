@@ -9,7 +9,7 @@ export default class TransactionService {
     return newTransaction;
   };
 
-  findUserTransactions = (accountId: number) => {
+  findUserTransactions = (accountId: string) => {
     const transactions = Transactions.findAll(
       { where: { creditedAccountId: accountId } }
       && { where: { debitedAccountId: accountId } },
