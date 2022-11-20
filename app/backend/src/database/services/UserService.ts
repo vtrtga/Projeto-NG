@@ -3,6 +3,7 @@ import * as Sequelize from 'sequelize';
 import INewUser from '../interfaces/INewUser';
 import Users from '../models/UsersModel';
 import Accounts from '../models/AccountsModel';
+import IBalance from '../interfaces/IBalance';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('../config/config');
@@ -50,13 +51,14 @@ export default class UserService {
     }
   };
 
-  checkBalance = async (id: number) => {
-    const userBalance = await Users.findOne({
+  checkBalance = async (id: number): Promise<IBalance> => {
+    const userBalance: Users | null = await Users.findOne({
       where: { id },
-      attributes: ['id'],
-      include: [{ model: Accounts, attributes: ['balance'] }],
+      attributes: [],
+      include: { model: Accounts, attributes: ['balance'] },
+      // raw: true,
     });
-
-    return userBalance;
+    const balance = userBalance?.dataValues.account.dataValues;
+    return balance;
   };
 }
