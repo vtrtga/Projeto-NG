@@ -51,11 +51,10 @@ export default class UserService {
   };
 
   checkBalance = async (id: number) => {
-    const numberId = Number(id);
     const userBalance = await Users.findOne({
-      where: { id: numberId },
-      attributes: { exclude: ['id', 'password', 'accountId', 'username'] },
-      include: [{ model: Accounts, attributes: { exclude: ['id'] } }],
+      where: { id },
+      attributes: ['id'],
+      include: [{ model: Accounts, attributes: ['balance'] }],
     });
 
     return userBalance;

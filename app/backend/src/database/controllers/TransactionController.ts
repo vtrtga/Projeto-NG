@@ -8,9 +8,20 @@ export default class TransactionController {
     this.transactionService = new TransactionService();
   }
 
-  findUserTransactions = async (req: Request, res: Response) => {
+  public findUserTransactions = async (req: Request, res: Response) => {
     const { id } = req.params;
     const transactions = await this.transactionService.findUserTransactions(id);
     return res.status(200).json(transactions);
+  };
+
+  public newTransaction = async (req: Request, res: Response) => {
+    const { value, creditedAccountId, debitedAccountId } = req.body;
+    const transaction = await this.transactionService.createTransaction(
+      value,
+      creditedAccountId,
+      debitedAccountId,
+    );
+
+    return res.status(201).json(transaction);
   };
 }
