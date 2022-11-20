@@ -7,7 +7,7 @@ import Accounts from '../models/AccountsModel';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('../config/config');
 
-const sequelize = new Sequelize.Sequelize(config);
+// const sequelize = new Sequelize.Sequelize(config);
 
 export default class UserService {
   getUser = async (username: string) => {
@@ -20,6 +20,8 @@ export default class UserService {
 
   // eslint-disable-next-line max-lines-per-function
   create = async (body: INewUser) => {
+    const sequelize = new Sequelize.Sequelize(config);
+
     const { password } = body;
     const t = await sequelize.transaction();
     const hashPassword = await bcrypt.hash(password, 6);
@@ -48,7 +50,7 @@ export default class UserService {
     }
   };
 
-  checkBalance = async (id: string) => {
+  checkBalance = async (id: number) => {
     const numberId = Number(id);
     const userBalance = await Users.findOne({
       where: { id: numberId },

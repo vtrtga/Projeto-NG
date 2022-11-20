@@ -1,5 +1,4 @@
 import { INTEGER, Model, STRING } from 'sequelize';
-// eslint-disable-next-line import/no-cycle
 import Accounts from './AccountsModel';
 import db from './db';
 
@@ -27,10 +26,6 @@ Users.init({
   },
   accountId: {
     type: INTEGER,
-    references: {
-      model: 'accounts',
-      key: 'id',
-    },
   },
 }, {
   sequelize: db,

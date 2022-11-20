@@ -12,10 +12,6 @@ Accounts.init({
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
-    references: {
-      model: 'accounts',
-      key: 'id',
-    },
   },
   balance: {
     type: INTEGER,

@@ -8,10 +8,9 @@ export default class TransactionController {
     this.transactionService = new TransactionService();
   }
 
-  findUserTransactions = (req: Request, res: Response) => {
+  findUserTransactions = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const transactions = this.transactionService.findUserTransactions(id);
-
+    const transactions = await this.transactionService.findUserTransactions(id);
     return res.status(200).json(transactions);
   };
 }
