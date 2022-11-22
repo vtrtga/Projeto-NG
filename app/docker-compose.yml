@@ -27,16 +27,17 @@ services:
       - DB_USER=root
       - DB_PASS=123456
       - DB_HOST=db
-      - DB_PORT=3306
+      - DB_PORT=5432
+      - NODE_ENV=development
   db:
     image: postgres
     container_name: db
     platform: linux/x86_64
     ports:
-      - 3002:3306
+      - 5432:5432
     environment:
       - POSTGRES_PASSWORD=123456
-      - POSTGRES_USER=123456
+      - POSTGRES_USER=root
     restart: 'always'
     cap_add:
       - SYS_NICE 
