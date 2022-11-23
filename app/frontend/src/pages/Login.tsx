@@ -1,7 +1,9 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { requestLogin, setToken } from '../services/request'
 import Header from '../components/Header'
-import { Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Register from './Register';
 
 function Login (): ReactElement {
   const [username, setUsername] = useState('');
@@ -30,7 +32,7 @@ function Login (): ReactElement {
   }, [username, password]);
 
   if(isLoggedIn) return <Navigate to="/home" />
-  
+
   return (
   <>
     <Header />
@@ -48,14 +50,21 @@ function Login (): ReactElement {
       type="password"
       className="password-login"
       value={ password }
-      onChange={({ target: { value } }) => setPassword(value)}
+      onChange={ ({ target: { value } }) => setPassword(value) }
       />
       {
         (loginFailed) ? (<p className="p-failed-login">Invalid username or password</p>) : null
       }
     <div className="btn-login">
-      <button className="btn-login-submit" onClick={login}>Login</button>
-      <button className="btn-login-register">Cadastrar</button>
+
+      <Link to="/register">
+      <button 
+      className="btn-login-submit" 
+      onClick={login}>Login</button>
+      <button className="btn-login-register" 
+      >Cadastrar</button>
+      </Link>
+      
     </div>
     </form>
     </section>

@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios from 'axios'
 import IUser from '../interfaces/IUser'
 
@@ -33,4 +30,8 @@ export const requestData = async (endpoint: string) => {
 export const requestLogin = async (endpoint: string, body: IUser) => {
   const { data } = await api.post(endpoint, body)
   return data
+}
+
+export const createUserRequest = async (endpoint: string, body: IUser) => {
+  await api.post(endpoint, body);
 }
