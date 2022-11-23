@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react'
-function Header (): ReactElement {
+
+function NewTransaction (): ReactElement {
   return (
   <div></div>
   )
 }
 
-export default Header
+export default NewTransaction

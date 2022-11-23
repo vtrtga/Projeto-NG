@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react'
-function Header (): ReactElement {
+
+function UserPanel (): ReactElement {
   return (
   <div></div>
   )
 }
 
-export default Header
+export default UserPanel

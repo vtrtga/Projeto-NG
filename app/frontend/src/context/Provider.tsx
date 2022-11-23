@@ -1,6 +1,6 @@
 import Context from './Context'
 
-function Provider({children}: any) {
+function Provider({ children }: any) {
   const context = {
 
   }

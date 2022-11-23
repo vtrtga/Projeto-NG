@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+import './styles/reset.css'
+import './styles/login.css'
 
-function App() {
+import Login from './pages/Login';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import UserPanel from './pages/UserPanel';
+function App(): ReactElement {
   return (
-    <div className="App">
-    </div>
+    <Routes>
+      <Route path="/home" element={ <UserPanel /> } />
+      <Route path="/login" element={ <Login /> } />
+      <Route path="/" element={ <Navigate to="/login"/> }/>
+    </Routes>
   );
 }
 
