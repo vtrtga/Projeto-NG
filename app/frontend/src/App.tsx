@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Register from './pages/Register'
 import './styles/reset.css'
 import './styles/login.css'
-import { Routes, Route, Navigate, Router, BrowserRouter } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Login from './pages/Login'
 import UserPanel from './pages/UserPanel'

@@ -9,29 +9,21 @@ const api = axios.create({
   baseURL: `${protocol}://${endpoint}:${port}`
 })
 
-interface Token {
-  token: string
-}
-
-interface LoginResponse {
-  data: Token
-}
-
 export const setToken = (token: string) => {
-  api.defaults.headers.common.Authorization = token
-}
+  api.defaults.headers.common.Authorization = token;
+};
 
 export const requestData = async (endpoint: string) => {
-  const { data } = await api.get(endpoint)
+  const { data } = await api.get(endpoint);
 
-  return data
-}
+  return data;
+};
 
 export const requestLogin = async (endpoint: string, body: IUser) => {
-  const { data } = await api.post(endpoint, body)
-  return data
-}
+  const { data } = await api.post(endpoint, body);
+  return data;
+};
 
 export const createUserRequest = async (endpoint: string, body: IUser) => {
   await api.post(endpoint, body);
-}
+};

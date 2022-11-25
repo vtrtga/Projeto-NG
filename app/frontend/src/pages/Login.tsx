@@ -1,15 +1,14 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { requestLogin, setToken } from '../services/request'
-import Header from '../components/Header'
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Register from './Register';
 
 function Login (): ReactElement {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginFailed, setLoginFailed] = useState(false); 
+  const [loginFailed, setLoginFailed] = useState(false);
+  const navigate = useNavigate();
 
   const login = async (e: any) => {
     e.preventDefault()
@@ -35,7 +34,6 @@ function Login (): ReactElement {
 
   return (
   <>
-    <Header />
     <section className="login-container">
     <form>
     <span className="login-text">Login</span>
@@ -55,15 +53,17 @@ function Login (): ReactElement {
       {
         (loginFailed) ? (<p className="p-failed-login">Invalid username or password</p>) : null
       }
+      
     <div className="btn-login">
 
-      <Link to="/register">
       <button 
       className="btn-login-submit" 
-      onClick={login}>Login</button>
-      <button className="btn-login-register" 
+      onClick={ login }>Login</button>
+
+
+      <button onClick={ () => navigate('/register') } className="btn-login-register" 
       >Cadastrar</button>
-      </Link>
+  
       
     </div>
     </form>

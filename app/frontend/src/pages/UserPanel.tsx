@@ -1,8 +1,11 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
+import Header from '../components/Header'
 
-function UserPanel (): ReactElement {
-  return (
-  <div></div>
+function UserPanel () {
+  return(
+    <div>
+      <Header />
+    </div>
   )
 }
 
