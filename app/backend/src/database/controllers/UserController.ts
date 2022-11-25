@@ -9,7 +9,7 @@ export default class UserCrontroller {
   }
 
   getUser = async (req: Request, res: Response) => {
-    const { username } = req.body;
+    const { username } = req.params;
     const user = await this.userService.getUser(username);
 
     return res.status(200).json(user);

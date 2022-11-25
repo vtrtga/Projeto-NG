@@ -22,7 +22,6 @@ export default class UserService {
   // eslint-disable-next-line max-lines-per-function
   create = async (body: INewUser) => {
     const sequelize = new Sequelize.Sequelize(config);
-
     const { password } = body;
     const t = await sequelize.transaction();
     const hashPassword = await bcrypt.hash(password, 6);
