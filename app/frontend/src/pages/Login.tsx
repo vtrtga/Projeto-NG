@@ -1,6 +1,8 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import { requestLogin, setToken } from '../services/request'
 import { Navigate, useNavigate } from 'react-router-dom';
+import { getUserByUsername } from '../services/request';
+import Context from '../context/Context';
 
 
 function Login (): ReactElement {
@@ -8,15 +10,17 @@ function Login (): ReactElement {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
+  const context = useContext(Context);
+
   const navigate = useNavigate();
 
   const login = async (e: any) => {
     e.preventDefault()
     try {
       const { token } = await requestLogin('/login', { username, password })
-
+      const user = await getUserByUsername(`users/${username}`)
+      context.user = user;
       setToken(token);
-
       setIsLoggedIn(true);
 
       localStorage.setItem('token', token);

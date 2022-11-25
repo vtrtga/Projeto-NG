@@ -6,7 +6,12 @@ const endpoint = `${process.env.ENDPOINT || 'localhost'}`
 const port = `${process.env.REACT_APP_API_PORT || '3001'}`
 
 const api = axios.create({
-  baseURL: `${protocol}://${endpoint}:${port}`
+  baseURL: `${protocol}://${endpoint}:${port}`,
+  headers: {
+    common: {
+      Authorization: localStorage.getItem('token'),
+    }, 
+  },
 })
 
 export const setToken = (token: string) => {
@@ -27,3 +32,8 @@ export const requestLogin = async (endpoint: string, body: IUser) => {
 export const createUserRequest = async (endpoint: string, body: IUser) => {
   await api.post(endpoint, body);
 };
+
+export const getUserByUsername = async(endpoint: string) => {
+  const { data } =  await api.get(endpoint);
+  return data;
+}

@@ -1,18 +1,35 @@
-import React from 'react'
-import { AppBar, Button, Toolbar } from '@mui/material'
-import { Box, Container, width } from '@mui/system'
+import React, { useContext, useEffect, useState } from 'react'
+import { AppBar, Button, TableHead, Toolbar } from '@mui/material'
+import { Box, Container } from '@mui/system'
+import { useNavigate } from 'react-router-dom'
+import { getUserByUsername } from '../services/request';
+import Context from '../context/Context';
+import { IEmptyContext, IUserInfos } from '../interfaces/IUserInfos';
 
-function UserPanel () {
+function UserPanel (): JSX.Element {
+  const navigate = useNavigate();
+  const { user } = useContext(Context);
+  const [userInfo, setUserInfo] = useState<any>({});
+
+  const logout = () => {
+    console.log(user)
+    localStorage.removeItem('token');
+    navigate('/');
+  }
+
+  useEffect(() => setUserInfo(user), [user]);
+
+  console.log(userInfo)
+
   return(
-    <React.Fragment>
     <>
-
     <AppBar position='static'>
       <Toolbar variant='regular'>
-        <Button variant='text' size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' } , margin: '3px', width: '3cm', color: 'black'}}>
+        <TableHead>{ userInfo.username }</TableHead>
+        <Button variant='text' onClick={() => navigate('/transfers') } size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' } , margin: '3px', width: '3cm', color: 'black'}}>
           Transfer
         </Button>
-        <Button variant='text' size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' }, margin: '3px', width: '3cm', color: 'black'}}>
+        <Button onClick={logout} variant='text' size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' }, margin: '3px', width: '3cm', color: 'black'}}>
           Logout
         </Button>
       </Toolbar>
@@ -27,7 +44,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
       </Box>
     </Container>
     </>
-    </React.Fragment>
   )
 }
 
