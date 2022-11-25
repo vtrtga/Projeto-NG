@@ -8,5 +8,5 @@ Node roda na porta 3001, o frontend na porta 3000 e o db postgres na porta 5432.
 Não é necessário dar npm start no frontend ou no backend, os containers já estão configurados para isso. Apenas
 acesse o link http://localhost:3000/
 
-2 - Executar o comando "npm run db:reset" para criar, popular e iniciar o db;
+2 - Executar o comando "npm run db:reset" no diretorio /backend para criar, popular e iniciar o db;
 
