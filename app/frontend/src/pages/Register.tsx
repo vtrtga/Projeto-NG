@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from "react";
 import { createUserRequest } from "../services/request";
 import '../styles/register.css'
 import { useNavigate } from "react-router-dom";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 
 function Register(): ReactElement {
   const [username, setUsername] = useState('');
@@ -65,9 +65,11 @@ function Register(): ReactElement {
     value={ password }
     onChange={({ target: { value } }) => { setPassword(value) }}
     className="password-input" />
+
     {
       validData ? null : <p className="register-err">username must be at least 3 characters and password at least 1 uppercase letter and 3 numbers</p>
     }
+
     {
       userExist ? <p>User already exists</p> : null
     }

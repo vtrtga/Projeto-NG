@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { requestLogin, setToken } from '../services/request'
 import { Navigate, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 function Login (): ReactElement {
   const [username, setUsername] = useState('');
