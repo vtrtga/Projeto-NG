@@ -41,4 +41,12 @@ const userExist = async (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export { isAnExistentUser, validateUserRegistration, userExist };
+const validParams = async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.params;
+  const numberId = Number(id);
+  if (!id || Number.isNaN(numberId)) return res.status(401).json({ message: 'Invalid id' });
+
+  next();
+};
+
+export { isAnExistentUser, validateUserRegistration, userExist, validParams };

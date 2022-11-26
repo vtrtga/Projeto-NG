@@ -13,7 +13,7 @@ const config = require('../config/config');
 export default class UserService {
   getUser = async (username: string) => {
     const findUser = await Users.findOne({
-      where: { username },
+      where: { username }, attributes: { exclude: ['password'] },
     });
 
     return findUser;
