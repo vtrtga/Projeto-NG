@@ -1,4 +1,5 @@
 import axios from 'axios'
+import ITransaction from '../interfaces/ITransaction'
 import IUser from '../interfaces/IUser'
 
 const protocol = `${process.env.PROTOCOL || 'http'}`
@@ -35,5 +36,11 @@ export const createUserRequest = async (endpoint: string, body: IUser) => {
 
 export const getUserInfos = async(endpoint: string) => {
   const { data } =  await api.get(endpoint);
+  return data;
+}
+
+export const requestTransaction = async(endpoint: string, body: ITransaction) => {
+  const { data } = await api.post(endpoint, body);
+
   return data;
 }

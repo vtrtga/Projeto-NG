@@ -7,7 +7,6 @@ import Provider from './context/Provider'
 
 import Login from './pages/Login'
 import UserPanel from './pages/UserPanel'
-import Transfers from './pages/Transfer'
 function App(): ReactElement {
   return (
     <Provider>
@@ -15,7 +14,6 @@ function App(): ReactElement {
       <Route path="/home" element={ <UserPanel /> } />
       <Route path="/login" element={ <Login /> } />
       <Route path="/register" element={ <Register /> } />
-      <Route path="/transfers" element={ <Transfers /> } />
       <Route path="/"  element={ <Navigate to="/login"/> }/>
     </Routes>
     </Provider>
