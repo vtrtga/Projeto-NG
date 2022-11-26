@@ -1,11 +1,18 @@
-import { useContext } from 'react';
+import { useState } from 'react';
 import Context from './Context'
 
 function Provider({ children }: any) {
-  const context = useContext(Context);
-
+  const [user, setUser] = useState<any>({});
+  const [balance, setBalance] = useState<any>(0);
+  const value: any =
+  {
+    user,
+    setUser,
+    balance,
+    setBalance,
+  };
   return(
-    <Context.Provider value={context}>
+    <Context.Provider value={ value }>
       {children}
     </Context.Provider>
   )

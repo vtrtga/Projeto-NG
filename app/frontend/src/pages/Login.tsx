@@ -1,7 +1,7 @@
 import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import { requestLogin, setToken } from '../services/request'
 import { Navigate, useNavigate } from 'react-router-dom';
-import { getUserByUsername } from '../services/request';
+import { getUserInfos } from '../services/request';
 import Context from '../context/Context';
 
 
@@ -10,7 +10,7 @@ function Login (): ReactElement {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
-  const context = useContext(Context);
+  const { user , setUser, setBalance } = useContext(Context);
 
   const navigate = useNavigate();
 
@@ -18,12 +18,17 @@ function Login (): ReactElement {
     e.preventDefault()
     try {
       const { token } = await requestLogin('/login', { username, password });
-      const user = await getUserByUsername(`users/${username}`);
-      context.user = user;
+      const loggedUser = await getUserInfos(`users/${ username }`);
+      setUser(loggedUser);
+
+      const loggedUserBalance = await getUserInfos(`users/balance/${ user.accountId }`);
+      setBalance(loggedUserBalance.balance);
       setToken(token);
       setIsLoggedIn(true);
 
       localStorage.setItem('token', token);
+      localStorage.setItem('userInfos', JSON.stringify(loggedUser));
+      localStorage.setItem('userBalance', loggedUserBalance.balance);
     } catch (e) {
       setLoginFailed(true);
       setIsLoggedIn(false);

@@ -33,7 +33,7 @@ export const createUserRequest = async (endpoint: string, body: IUser) => {
   await api.post(endpoint, body);
 };
 
-export const getUserByUsername = async(endpoint: string) => {
+export const getUserInfos = async(endpoint: string) => {
   const { data } =  await api.get(endpoint);
   return data;
 }
