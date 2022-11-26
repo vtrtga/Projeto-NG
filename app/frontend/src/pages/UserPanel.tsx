@@ -2,9 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AppBar, Button, TableHead, Toolbar } from '@mui/material'
 import { Box, Container } from '@mui/system'
 import { useNavigate } from 'react-router-dom'
-import { getUserByUsername } from '../services/request';
 import Context from '../context/Context';
-import { IEmptyContext, IUserInfos } from '../interfaces/IUserInfos';
 
 function UserPanel (): JSX.Element {
   const navigate = useNavigate();
@@ -25,13 +23,13 @@ function UserPanel (): JSX.Element {
     <>
     <AppBar position='static'>
       <Toolbar variant='regular'>
-        <TableHead>{ userInfo.username }</TableHead>
         <Button variant='text' onClick={() => navigate('/transfers') } size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' } , margin: '3px', width: '3cm', color: 'black'}}>
           Transfer
         </Button>
         <Button onClick={logout} variant='text' size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' }, margin: '3px', width: '3cm', color: 'black'}}>
           Logout
         </Button>
+        <TableHead sx={{ position: 'absolute', marginLeft: '25cm' }}>You are logged in as { userInfo.username }</TableHead>
       </Toolbar>
     </AppBar>
 

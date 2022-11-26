@@ -17,8 +17,8 @@ function Login (): ReactElement {
   const login = async (e: any) => {
     e.preventDefault()
     try {
-      const { token } = await requestLogin('/login', { username, password })
-      const user = await getUserByUsername(`users/${username}`)
+      const { token } = await requestLogin('/login', { username, password });
+      const user = await getUserByUsername(`users/${username}`);
       context.user = user;
       setToken(token);
       setIsLoggedIn(true);
