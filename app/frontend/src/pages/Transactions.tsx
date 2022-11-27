@@ -61,7 +61,7 @@ function Transactions() {
         </tbody>
       </table>
     </Container>
-    <Button onClick={() => navigate('/home')} variant='text' size='medium' color='secondary' sx={{postion: "absolute", left: "10cm", bottom: "3cm" ,margin: '5cm', bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' },  width: '3cm', color: 'black'}}>
+    <Button onClick={() => navigate('/home')} variant='text' size='medium' color='secondary' sx={{postion: "absolute", left: "10cm", bottom: "3cm" ,margin: '5cm', bgcolor: '#92a8d1', ":hover": { bgcolor: '#e6e2d3' },  width: '3cm', color: 'black'}}>
     Back</Button>
     </>
   )
