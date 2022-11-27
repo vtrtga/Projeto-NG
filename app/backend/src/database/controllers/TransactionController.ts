@@ -18,8 +18,8 @@ export default class TransactionController {
     const { value, creditedAccountId, debitedAccountId } = req.body;
     const transaction = await this.transactionService.createTransaction(
       value,
-      creditedAccountId,
       debitedAccountId,
+      creditedAccountId,
     );
 
     return res.status(201).json(transaction);

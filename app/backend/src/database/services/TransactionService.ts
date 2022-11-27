@@ -21,22 +21,18 @@ export default class TransactionService {
     debitedAccountId: number,
     creditedAccountId: number,
   ) => {
+    console.log(debitedAccountId, creditedAccountId, '-------------------------------');
     const transaction = await this.sequelize.transaction();
     try {
-      const prevDebitedAccBalance = (await this.userService.checkBalance(debitedAccountId)).balance;
-      const newDebitedAccBalance = prevDebitedAccBalance - value;
-      const prevCreditedAccBalance = (await this.userService
-        .checkBalance(creditedAccountId)).balance;
-      const newCreditedAccBalance = prevCreditedAccBalance + value;
       const newTransaction = await Transactions.create({
         debitedAccountId, creditedAccountId, value, createdAt: new Date(),
       }, { transaction });
-      await Accounts.update(
-        { balance: newDebitedAccBalance },
+      await Accounts.increment(
+        { balance: value },
         { where: { id: creditedAccountId }, transaction },
       );
-      await Accounts.update(
-        { balance: newCreditedAccBalance },
+      await Accounts.increment(
+        { balance: -value },
         { where: { id: debitedAccountId }, transaction },
       );
 
