@@ -39,8 +39,9 @@ export const getUserInfos = async(endpoint: string) => {
   return data;
 }
 
-export const requestTransaction = async(endpoint: string, body: ITransaction) => {
+export const transactionRequest = async(endpoint: string, body: ITransaction) => {
   const { data } = await api.post(endpoint, body);
 
   return data;
 }
+

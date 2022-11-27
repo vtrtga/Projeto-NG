@@ -7,10 +7,12 @@ import Provider from './context/Provider'
 
 import Login from './pages/Login'
 import UserPanel from './pages/UserPanel'
+import Transactions from './pages/Transactions'
 function App(): ReactElement {
   return (
     <Provider>
     <Routes>
+      <Route path="/transactions" element={ <Transactions /> }/>
       <Route path="/home" element={ <UserPanel /> } />
       <Route path="/login" element={ <Login /> } />
       <Route path="/register" element={ <Register /> } />

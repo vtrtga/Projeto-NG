@@ -9,15 +9,16 @@ body {
 }
 
 .register-div {
-  height: 100%;
-  width: 100%;
-  padding-top: 8%;
+  margin-top: 200px;
+  /* border: 3px solid black; */
 }
 
 form {
+  background-color: #2196f3;
   margin: auto;
   text-align: center;
   height: 400px;
+  color: white;
   border: 2px solid black;
   border-radius: 5px;
 }

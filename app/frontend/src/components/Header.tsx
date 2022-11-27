@@ -18,19 +18,19 @@ function Header (): ReactElement {
     console.log(user, 'Usercontext');
     setUser(JSON.parse(userInfos || '{}'));
     setBalance(localStorage.getItem('userBalance'));
-  });
+  },[]);
 
   return (
   <div>
     <AppBar position='static'>
       <Toolbar variant='regular'>
-        <Button variant='text' onClick={() => navigate('/transfers') } size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' } , margin: '3px', width: '3cm', color: 'black'}}>
-          Transfer
+        <Button variant='text' onClick={() => navigate('/transactions') } size='medium' color='secondary' sx={{ bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' } , margin: '3px', width: '5cm', color: 'black'}}>
+          Transactions
         </Button>
-        <Button onClick={logout} variant='text' size='medium' color='secondary' sx={{ position: 'absolute', margin: '5cm', bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' },  width: '3cm', color: 'black'}}>
+        <Button onClick={logout} variant='text' size='medium' color='secondary' sx={{ justifySelf: 'flex-end', position: 'absolute', left: '28cm', margin: '5cm', bgcolor: 'ButtonFace', ":hover": { bgcolor: '#e6e2d3' },  width: '3cm', color: 'black'}}>
           Logout
         </Button>
-        <TableHead sx={{ position: 'absolute', marginLeft: '25cm' }}>You are logged in as { user.username }</TableHead>
+        <TableHead sx={{ position: 'absolute', marginLeft: '25cm', justifySelf: 'flex-end' }}>You are logged in as { user.username }</TableHead>
         <TableHead sx={{ position: 'absolute', marginLeft: '15cm' }}>Balance: ${ balance }</TableHead>
       </Toolbar>
     </AppBar>
