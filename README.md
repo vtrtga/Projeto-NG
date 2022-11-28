@@ -1,7 +1,11 @@
 # Projeto-NG
-Projeto para processo seletivo da NG
+Projeto Fullstack para processo seletivo da NG
 
-Antes de tudo, verificar se as portas 3001, 3000 e 5432 estão disponíveis.
+Antes de tudo,
+abrir diretório /backend e instalar dependencias, depois
+abrir diretório /frontend e instalar dependencias.
+
+Verificar se as portas 3001, 3000 e 5432 estão disponíveis.
 Node roda na porta 3001, o frontend na porta 3000 e o db postgres na porta 5432.
 
 1 - Executar o comando "docker-compose up -d" para inicializar todos os serviços do docker.
