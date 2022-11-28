@@ -35,6 +35,7 @@ export const createUserRequest = async (endpoint: string, body: IUser) => {
 };
 
 export const getUserInfos = async(endpoint: string) => {
+  console.log(endpoint, 'ENDPOINT')
   const { data } =  await api.get(endpoint);
   return data;
 }

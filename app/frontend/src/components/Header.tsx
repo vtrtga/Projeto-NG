@@ -15,7 +15,6 @@ function Header (): ReactElement {
 
   useEffect(() => {
     const userInfos = localStorage.getItem('userInfos');
-    console.log(user, 'Usercontext');
     setUser(JSON.parse(userInfos || '{}'));
     setBalance(localStorage.getItem('userBalance'));
   },[]);

@@ -1,33 +1,35 @@
 import { Button } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Context from "../context/Context";
 import '../styles/transactions.css';
 import { getUserInfos } from "../services/request";
 
 function Transactions() {
-  const { user, setUser } = useContext(Context);
+  const { user } = useContext(Context);
   const [transactions, setTransactions] = useState<any>([])
-  const [userInfo, setUserInfos] = useState<any>({});
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const navigate = useNavigate();
 
-  const didUpdate = async () => {
+
+  const didUpdate = async (id: number) => {
     try{
-      const userInfos = localStorage.getItem('userInfos');
-      setUserInfos(JSON.parse(userInfos || '{}'));
-      console.log(user);
-      const transactions = await getUserInfos(`/transactions/${ userInfo.accountId }`)
+      const transactions = await getUserInfos(`/transactions/${ id }`)
       setTransactions(transactions);
+      setIsLoggedIn(true);
 
     } catch(e) {
+      setIsLoggedIn(false);
       console.error(e);
     }
   }
   useEffect(() => {
-    didUpdate();
+    didUpdate(user.accountId);
   },[user]);
+
+  if(!isLoggedIn) return <Navigate to="/"/>
 
   return(
     <>
