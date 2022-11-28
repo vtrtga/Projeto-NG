@@ -1,5 +1,5 @@
 # Projeto-NG
-Projeto para processo seletivo da NG
+Projeto Fullstack para processo seletivo da NG
 
 Antes de tudo,
 abrir diretório /backend e instalar dependencias, depois
